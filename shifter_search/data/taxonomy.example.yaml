@@ -1,0 +1,32 @@
+# Taxonomie contrôlée : à construire avec les Shifters (termes à fort TF-IDF regroupés, puis validés).
+# Les termes sont lemmatisés comme le texte : « îlots de chaleur » correspond à « îlot de chaleur ».
+adaptation:
+  label: Adaptation au changement climatique
+  terms:
+    - adaptation
+    - résilience
+    - canicule
+    - sécheresse
+    - îlot de chaleur
+    - retrait-gonflement des argiles
+    - montée du niveau de la mer
+    - inondation
+
+attenuation:
+  label: Atténuation et décarbonation
+  terms:
+    - atténuation
+    - décarbonation
+    - émissions de gaz à effet de serre
+    - rénovation énergétique
+    - neutralité carbone
+    - sobriété énergétique
+
+mobilite:
+  label: Mobilité
+  terms:
+    - mobilité
+    - transports en commun
+    - vélo
+    - véhicule électrique
+    - ferroviaire

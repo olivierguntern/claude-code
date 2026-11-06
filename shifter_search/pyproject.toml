@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shifter-search"
+version = "0.1.0"
+description = "Recherche documentaire hybride (BM25 + embeddings gelés) pour les publications du Shift"
+requires-python = ">=3.10"
+dependencies = [
+    "pymupdf",          # extraction PDF (licence AGPL, voir README)
+    "simplemma>=1.0",   # lemmatisation à dictionnaire
+    "numpy",
+    "scikit-learn",
+    "pyyaml",
+    "pyahocorasick",    # appariement de la taxonomie
+    "joblib",
+]
+
+[project.optional-dependencies]
+e5 = ["sentence-transformers"]      # embeddings multilingual-e5 (CPU)
+api = ["fastapi", "uvicorn"]
+dev = ["pytest", "httpx"]
+
+[project.scripts]
+shifter-search = "shifter_search.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["shifter_search*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

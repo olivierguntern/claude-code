@@ -1,0 +1,8 @@
+__pycache__/
+*.egg-info/
+.venv/
+*.db
+*.db-wal
+*.db-shm
+*.joblib
+demo_pdfs/
