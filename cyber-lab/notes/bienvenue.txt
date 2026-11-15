@@ -1,0 +1,2 @@
+Bienvenue dans le dossier de notes du laboratoire.
+Ce fichier est public et destiné à être lu par le défi 4.
