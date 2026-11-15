@@ -131,6 +131,28 @@ En mode vulnérable, le cookie de session n'a pas d'attributs de protection. En 
 `SAFE=1`, il reçoit `HttpOnly`, `SameSite=Strict` et `Path=/`. Comparez les en-têtes
 `Set-Cookie` dans les outils de développement du navigateur (onglet Réseau).
 
+## Annexe — Découverte du réseau local (`discover.sh`)
+
+Script d'inventaire des appareils de **votre** réseau, à exécuter depuis une machine
+reliée à la box (pas depuis une session cloud, qui n'a pas accès au LAN).
+
+```bash
+./discover.sh            # passif : IP locale, passerelle, table ARP (aucun scan)
+./discover.sh --sweep    # actif : balayage ping du sous-réseau /24
+./discover.sh --sweep --net 192.168.1   # forcer le préfixe si la détection échoue
+```
+
+Sortie typique : votre IP, l'adresse de la box (passerelle), puis la liste des hôtes
+actifs avec leur adresse MAC. Pour repérer un PC précis, relevez sa MAC sur l'appareil
+lui-même (`ipconfig /all` sous Windows, `ip addr` sous Linux/macOS) et croisez-la avec
+la liste — ou consultez la page d'administration de la box, généralement la plus lisible.
+
+Équivalents Windows (PowerShell) : `ipconfig /all`, `arp -a`, et pour un balayage
+`1..254 | ForEach-Object { Test-Connection -Count 1 -Quiet "192.168.1.$_" }`.
+
+> La découverte d'hôtes sur un réseau que l'on possède relève de l'administration
+> normale. Ne l'exercez jamais sur un réseau tiers sans autorisation écrite.
+
 ## Pour aller plus loin
 
 - Outils d'observation : onglet « Réseau » et « Console » du navigateur suffisent ici.
